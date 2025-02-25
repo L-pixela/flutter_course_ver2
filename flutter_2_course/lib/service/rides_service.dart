@@ -25,6 +25,9 @@ class RidesService {
   }
 }
 
+//
+// Main for Testing the data to amount of data
+//
 void main() {
   // to see the amount of availables ride
   print("Ride Availables: ${RidesService.availableRides.length}");
