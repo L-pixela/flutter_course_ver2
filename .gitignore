@@ -1,0 +1,14 @@
+
+# Ignoring the whole folders
+flutter_2_course/*
+
+## Trying to give access to git to see the folder
+!flutter_2_course/
+
+
+# at exception for important folders
+!flutter_2_course/assets/
+
+!flutter_2_course/lib/
+
+!flutter_2_course/pubspec.yaml
