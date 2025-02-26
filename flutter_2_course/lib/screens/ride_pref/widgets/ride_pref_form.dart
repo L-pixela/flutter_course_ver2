@@ -6,6 +6,7 @@ import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
+import 'package:week_3_blabla_project/widgets/inputs/seat_spinner.dart';
 
 import '../../../model/ride/locations.dart';
 import '../../../model/ride_pref/ride_pref.dart';
@@ -136,7 +137,18 @@ class _RidePrefFormState extends State<RidePrefForm> {
               DateTimeUtils.formatDateTime(departureDate), null, () {}),
           BlaDivider(),
           //Requested Seats Field
-          inputFieldTile(Icons.people, "$requestedSeats", null, () {}),
+          inputFieldTile(
+            Icons.people,
+            "$requestedSeats",
+            null,
+            // To open the seat picker:
+            () => SeatPicker.show(
+              context: context,
+              initialSeats: requestedSeats,
+              onSeatsChanged: (newSeats) =>
+                  setState(() => requestedSeats = newSeats),
+            ),
+          ),
           //Booking Button
           BlaButton(
               type: BlaButtonType.primary,

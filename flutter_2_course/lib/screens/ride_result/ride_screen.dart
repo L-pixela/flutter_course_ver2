@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:week_3_blabla_project/dummy_data/dummy_data.dart';
 import 'package:week_3_blabla_project/model/ride/locations.dart';
-import 'package:week_3_blabla_project/model/ride/ride.dart';
 import 'package:week_3_blabla_project/model/ride_pref/ride_pref.dart';
 import 'package:week_3_blabla_project/screens/ride_result/widgets/ride_card.dart';
-import 'package:week_3_blabla_project/theme/theme.dart';
-import 'package:week_3_blabla_project/utils/date_time_util.dart';
 
 class RidesScreen extends StatelessWidget {
   final RidePref selectedPref;
