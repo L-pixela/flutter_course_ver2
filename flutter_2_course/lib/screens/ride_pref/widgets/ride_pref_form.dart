@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:week_3_blabla_project/screens/ride_pref/widgets/location_picker.dart';
+import 'package:week_3_blabla_project/screens/ride_result/ride_screen.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
 import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
@@ -125,7 +126,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
           inputFieldTile(
               Icons.radio_button_off,
               arrival != null
-                  ? "${arrival!.name}, ${arrival!.country}"
+                  ? "${arrival!.name}, ${arrival!.country.name}"
                   : "Choose your Destination",
               null,
               () => _showLocationPicker(context, false)),
@@ -140,7 +141,35 @@ class _RidePrefFormState extends State<RidePrefForm> {
           BlaButton(
               type: BlaButtonType.primary,
               label: "Search",
-              onPressedBlaButton: () {}),
+              // Search for the rides if there is any available
+              onPressedBlaButton: () {
+                if (departure == null || arrival == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        backgroundColor: BlaColors.neutral,
+                        content: Text(
+                          "Please select both locations",
+                          style: BlaTextStyles.label,
+                        )),
+                  );
+                  return;
+                }
+
+                final currentPref = RidePref(
+                  departure: departure!,
+                  arrival: arrival!,
+                  departureDate: departureDate,
+                  requestedSeats: requestedSeats,
+                );
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        RidesScreen(selectedPref: currentPref),
+                  ),
+                );
+              }),
         ],
       ),
     );
