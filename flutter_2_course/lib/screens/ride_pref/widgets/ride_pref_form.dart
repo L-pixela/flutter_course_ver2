@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_3_blabla_project/screens/ride_pref/widgets/location_picker.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
@@ -66,6 +67,22 @@ class _RidePrefFormState extends State<RidePrefForm> {
     }
   }
 
+  // to show the location picker when you search for destination and location
+  void _showLocationPicker(BuildContext context, bool isDeparture) {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => LocationPicker(
+          onLocationSelected: (location) {
+            setState(
+                () => isDeparture ? departure = location : arrival = location);
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  }
+
   // ----------------------------------
   // Compute the widgets rendering
   // ----------------------------------
@@ -107,7 +124,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
               Icons.radio_button_off,
               departure?.name ?? "Choose your Location",
               Icons.swap_vert,
-              () {}),
+              () => _showLocationPicker(context, true)),
           BlaDivider(),
           //Arrival Field
           inputFieldTile(
