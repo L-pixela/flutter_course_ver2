@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:week_3_blabla_project/screens/ride_pref/widgets/location_picker.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
+import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
@@ -69,18 +70,12 @@ class _RidePrefFormState extends State<RidePrefForm> {
 
   // to show the location picker when you search for destination and location
   void _showLocationPicker(BuildContext context, bool isDeparture) {
-    Navigator.push(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => LocationPicker(
-          onLocationSelected: (location) {
-            setState(
-                () => isDeparture ? departure = location : arrival = location);
-            Navigator.pop(context);
-          },
-        ),
-      ),
-    );
+    // Using AninationUtils to make tween animation where the dialog will slide up and stop at the center
+    Navigator.push(context, AnimationUtils.createBottomToTopRoute(
+        LocationPicker(onLocationSelected: (location) {
+      setState(() => isDeparture ? departure = location : arrival = location);
+      Navigator.pop(context);
+    })));
   }
 
   // ----------------------------------
@@ -133,7 +128,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
                   ? "${arrival!.name}, ${arrival!.country}"
                   : "Choose your Destination",
               null,
-              () {}),
+              () => _showLocationPicker(context, false)),
           BlaDivider(),
           //DepatureDate Field
           inputFieldTile(Icons.calendar_month,
