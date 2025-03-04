@@ -4,6 +4,7 @@ import 'package:week_3_blabla_project/theme/theme.dart';
 import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
 
+//Feedback remove related to the seat and move it to widget for resuable widget
 class SeatPicker extends StatefulWidget {
   // Initial seat count from parent
   final int initialSeats;

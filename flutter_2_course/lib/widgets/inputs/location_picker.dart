@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:week_3_blabla_project/dummy_data/dummy_data.dart';
-import 'package:week_3_blabla_project/screens/ride_pref/widgets/location_tile.dart';
+import 'package:week_3_blabla_project/widgets/inputs/location_tile.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
-import '../../../model/ride/locations.dart';
+import '../../model/ride/locations.dart';
 
 //
 // Location Picker Screen
@@ -37,7 +37,7 @@ class _LocationPickerState extends State<LocationPicker> {
           onPressed: () => Navigator.pop(context),
         ),
 
-        // Search input field
+        // Search input fieldW
         title: TextField(
           controller: _searchController,
           autofocus: true, // Auto-focus keyboard on open

@@ -105,6 +105,12 @@ List<RidePref> fakeRidePrefs = [
     arrival: fakeLocations[1], //Cambridge
     requestedSeats: 1,
   ),
+  RidePref(
+    departure: fakeLocations[1], // London
+    departureDate: DateTime.now(), // Today
+    arrival: fakeLocations[2], //Cambridge
+    requestedSeats: 1,
+  ),
 ];
 
 // Fake  Users

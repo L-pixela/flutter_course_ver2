@@ -36,9 +36,7 @@ class RidesScreen extends StatelessWidget {
               itemCount: matchingRides.length,
               itemBuilder: (context, index) {
                 final ride = matchingRides[index];
-                return RideCard(
-                  ride: ride,
-                );
+                return RideCard(ride: ride);
               },
             ),
     );

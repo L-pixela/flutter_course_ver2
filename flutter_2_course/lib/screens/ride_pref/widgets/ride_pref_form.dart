@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:week_3_blabla_project/screens/ride_pref/widgets/location_picker.dart';
+import 'package:week_3_blabla_project/widgets/inputs/location_picker.dart';
 import 'package:week_3_blabla_project/screens/ride_result/ride_screen.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
 import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
-import 'package:week_3_blabla_project/widgets/inputs/seat_spinner.dart';
+import 'package:week_3_blabla_project/widgets/inputs/bla_seat_spinner.dart';
 
 import '../../../model/ride/locations.dart';
 import '../../../model/ride_pref/ride_pref.dart';
@@ -80,11 +80,15 @@ class _RidePrefFormState extends State<RidePrefForm> {
     })));
   }
 
+  // To search for the ride result
+  // void _searchRide(BuildContext context, ){
+  // }
+
   // ----------------------------------
   // Compute the widgets rendering
   // ----------------------------------
 
-  //Input Field Tile
+  //Input Field Tile (can change to widget stateless widget)
   Widget inputFieldTile(IconData leadIcon, String label, IconData? trailIcon,
       VoidCallback onTapped) {
     return ListTile(
@@ -149,7 +153,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
                   setState(() => requestedSeats = newSeats),
             ),
           ),
-          //Booking Button
+          // Searching&Booking Button
           BlaButton(
               type: BlaButtonType.primary,
               label: "Search",
